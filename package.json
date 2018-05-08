@@ -1,0 +1,23 @@
+{
+  "name": "dvdnd",
+  "version": "1.0.0",
+  "description": "A dividend-paying ERC20 token.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getabitlit/dvdnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/getabitlit/dvdnd/issues"
+  },
+  "homepage": "https://github.com/getabitlit/dvdnd#readme",
+  "dependencies": {
+    "truffle": "^4.1.8"
+  }
+}

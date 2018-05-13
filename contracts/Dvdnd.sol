@@ -4,36 +4,36 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/StandardToke
 
 contract Dvdnd is StandardToken {
 
-  string constant public tokenName = "A Dividend-Paying Token";
-  string constant public tokenSymbol = "DPT";
-  uint constant public decimals = 18;
+  string constant public name = "A Dividend-Paying Token";
+  string constant public symbol = "DPT";
+  uint8 constant public decimals = 18;
   uint constant private supplyOfTokens = 500;
 
   uint private currentDividendIndex = 0;
   mapping(address => uint) private lastUserDividendIndex;
-  address private _owner;
+  address private _custodian;
 
   constructor() public {
-    _owner = msg.sender;
+    _custodian = msg.sender;
     // totalSupply_ found in BasicToken.sol in OpenZeppelin
     totalSupply_ = supplyOfTokens;
-    balances[_owner] = supplyOfTokens;
+    balances[_custodian] = supplyOfTokens;
   }
 
-  modifier ownerOnly {
-    require(msg.sender == owner());
+  modifier custodianOnly {
+    require(msg.sender == custodian());
     _;
   }
 
-  function owner() public view returns(address) {
-    return _owner;
+  function custodian() public view returns(address) {
+    return _custodian;
   }
 
-  function transferOwnership(address _newOwner) public ownerOnly {
-    _owner = _newOwner;
+  function transferOwnership(address _newOwner) public custodianOnly {
+    _custodian = _newOwner;
   }
 
-  function loadEarnings() public payable ownerOnly{
+  function loadEarnings() public payable custodianOnly{
     require(msg.value > 0);
     currentDividendIndex++;
   }

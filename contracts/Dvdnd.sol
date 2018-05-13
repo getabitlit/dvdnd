@@ -17,7 +17,7 @@ contract Dvdnd is StandardToken {
     _custodian = msg.sender;
     // totalSupply_ found in BasicToken.sol in OpenZeppelin
     totalSupply_ = supplyOfTokens;
-    balances[_custodian] = supplyOfTokens;
+    balances[_custodian] = totalSupply_;
   }
 
   modifier custodianOnly {
@@ -25,7 +25,7 @@ contract Dvdnd is StandardToken {
     _;
   }
 
-  function custodian() public view returns(address) {
+  function custodian() public view returns (address) {
     return _custodian;
   }
 
